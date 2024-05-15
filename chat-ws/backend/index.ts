@@ -50,19 +50,6 @@ router.ws('/chat', (ws, req) => {
         }
     });
 
-    // ws.on('message', (message) => {
-    //     console.log(message.toString());
-    //     const parsedMessage = JSON.parse(message.toString()) as IncomingMessage;
-    //     if (parsedMessage.type === 'SET_USERNAME' ){
-    //         username = parsedMessage.payload
-    //     } else if (parsedMessage.type === 'SEND_MESSAGE' ){
-    //         Object.values(activeConnections).forEach(connection => {
-    //             const outgoingMessage = {type: 'NEW_MESSAGE', payload: {username, text: parsedMessage.payload}};
-    //             connection.send(JSON.stringify(outgoingMessage));
-    //         })
-    //     }
-    // })
-
     ws.on('close', () => {
         console.log('client disconnected id = ', id);
         delete activeConnections[id];
